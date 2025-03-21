@@ -35,11 +35,11 @@ def inside(head):
     """Return True if head inside boundaries."""
     return -200 < head.x < 190 and -200 < head.y < 190
 
-def foodInside(food):
+def food_inside(food):
     #Return true if food is inside boundaries
     return -200 < food.x < 190 and -200 < food.y < 190
 
-def randMove(food):
+def rand_move(food):
     direction = randrange(0, 4)
     #random move direction
     originalX, originalY = food.x, food.y
@@ -53,10 +53,10 @@ def randMove(food):
         food.y -= 10
     """ if the new position is outside boundaries, revert movement and 
     call the function again to create a new move"""
-    if not foodInside(food):
+    if not food_inside(food):
         food.x = originalX
         food.y = originalY
-        randMove(food)
+        rand_move(food)
 
 def move():
     """Move snake forward one segment."""
@@ -76,7 +76,7 @@ def move():
         food.y = randrange(-15, 15) * 10
     else:
         #Move food if not eaten
-        randMove(food)
+        rand_move(food)
         snake.pop(0)
 
     clear()
